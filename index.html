@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Guarida de Antibush</title>
+    <style>
+      :root {
+        --primary-color: #19197d;
+        --secondary-color: #f4f4f4;
+        --accent-color: #ffd700;
+        --background-color: #1a1a1a;
+        --text-color: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--background-color);
+      }
+
+      header {
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+        margin-right: 1rem;
+      }
+
+      .brand-name {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .search-bar {
+        flex-grow: 1;
+        max-width: 400px;
+        margin: 0 1rem;
+      }
+
+      .search-bar input {
+        width: 100%;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--text-color);
+      }
+
+      nav {
+        background-color: #000;
+        padding: 0.5rem 0;
+        overflow-x: auto;
+      }
+
+      nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+      }
+
+      nav ul li {
+        margin: 0.5rem 1rem;
+      }
+
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        transition: background-color 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        background-color: var(--accent-color);
+        color: #000;
+      }
+
+      main {
+        padding: 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .featured-content {
+        width: 100%;
+        max-height: 400px;
+        overflow: hidden;
+        border-radius: 20px;
+        margin-bottom: 1rem;
+        position: relative;
+      }
+
+      .featured-content img,
+      .featured-content video {
+        width: 100%;
+        height: auto;
+        display: none;
+        border-radius: 20px;
+      }
+
+      .featured-content img.active,
+      .featured-content video.active {
+        display: block;
+      }
+
+      .content-nav {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+      }
+
+      .content-nav-btn {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+      }
+
+      .content-nav-btn.active {
+        background-color: var(--accent-color);
+      }
+
+      .tournament-card {
+        background-color: #2a1a35;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        margin-top: 20px;
+        flex-direction: column;
+      }
+
+      .tournament-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .tournament-details {
+        padding: 20px;
+        flex-grow: 1;
+      }
+
+      .tournament-details h3 {
+        color: #fff;
+        margin-bottom: 5px;
+      }
+
+      .game-name {
+        color: #00ffff;
+        margin-bottom: 10px;
+      }
+
+      .tournament-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 10px;
+      }
+
+      .info-item {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.9em;
+      }
+
+      .host {
+        margin-bottom: 10px;
+      }
+
+      .host-name {
+        color: #00ffff;
+      }
+
+      .tournament-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .date-time {
+        color: #aaa;
+      }
+
+      .prize {
+        color: #ffd700;
+        font-weight: bold;
+      }
+
+      .icon-battle-royale,
+      .icon-players,
+      .icon-slots,
+      .icon-verified,
+      .icon-trophy {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        vertical-align: middle;
+      }
+
+      .icon-battle-royale {
+        background-image: url("https://cdn-icons-png.flaticon.com/128/9601/9601312.png");
+      }
+
+      .icon-players {
+        background-image: url("https://cdn-icons-png.flaticon.com/128/615/615075.png");
+      }
+
+      .icon-slots {
+        background-image: url("https://cdn-icons-png.flaticon.com/128/4029/4029423.png");
+      }
+
+      .icon-verified {
+        background-image: url("https://cdn-icons-png.flaticon.com/128/1828/1828640.png");
+      }
+
+      .icon-trophy {
+        background-image: url("https://cdn-icons-png.flaticon.com/512/625/625398.png");
+      }
+
+      .welcome {
+        background-color: rgba(244, 244, 244, 0.1);
+        padding: 2rem;
+        margin: 1rem 0;
+        text-align: center;
+        border-radius: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .welcome h1 {
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .category-item {
+        background-color: rgba(244, 244, 244, 0.1);
+        padding: 1.5rem;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .category-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .additional-content {
+        margin-top: 2rem;
+      }
+
+      .content-section {
+        background-color: rgba(244, 244, 244, 0.1);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border-radius: 20px;
+      }
+
+      .content-section h2 {
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+      }
+
+      .support-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--accent-color);
+        color: #000;
+        padding: 10px 20px;
+        border-radius: 20px 20px 0 20px;
+        text-decoration: none;
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+      }
+
+      .support-button::before {
+        content: "💬";
+        margin-right: 5px;
+        font-size: 1.2em;
+      }
+
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .logo-container {
+          justify-content: center;
+          margin-bottom: 1rem;
+        }
+
+        .search-bar {
+          max-width: 100%;
+          margin: 1rem 0;
+        }
+
+        .category-grid {
+          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        }
+
+        .tournament-card {
+          flex-direction: column;
+        }
+
+        .tournament-image {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      @media (min-width: 769px) {
+        .tournament-card {
+          flex-direction: row;
+        }
+
+        .tournament-image {
+          width: 200px;
+          height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img
+          src="https://csgo.com/thumb/team/size-team-logo-big/2018/09/7/NzZ4cEhVU0hablY=.png"
+          alt="Logo"
+          class="logo"
+        />
+        <span class="brand-name">La Guarida de Antibush</span>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="¿Qué estás buscando?" />
+      </div>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#inicio">INICIO</a></li>
+        <li><a href="#videojuegos">VIDEOJUEGOS</a></li>
+        <li><a href="#recargas">RECARGAS</a></li>
+        <li><a href="#accesorios">ACCESORIOS</a></li>
+        <li><a href="#acerca-de">ACERCA DE</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="featured-content">
+        <video autoplay loop muted playsinline class="active">
+          <source src="wasone3.mp4" type="video/mp4" />
+          Tu navegador no soporta el elemento de video.
+        </video>
+        <video loop muted playsinline>
+          <source src="waasone2.mp4" type="video/mp4" />
+          Tu navegador no soporta el elemento de video.
+        </video>
+        <video loop muted playsinline>
+          <source src="warsone.mp4" type="video/mp4" />
+          Tu navegador no soporta el elemento de video.
+        </video>
+        <div class="content-nav">
+          <div class="content-nav-btn active"></div>
+          <div class="content-nav-btn"></div>
+          <div class="content-nav-btn"></div>
+        </div>
+      </div>
+
+      <div class="welcome">
+        <h1>BIENVENIDO A LA GUARIDA DE ANTIBUSH</h1>
+        <p>
+          Tu destino para videojuegos digitales, recargas y accesorios gaming
+        </p>
+      </div>
+
+      <h2>CATEGORÍAS</h2>
+      <div class="category-grid">
+        <div class="category-item">Videojuegos Digitales</div>
+        <div class="category-item">Recargas</div>
+        <div class="category-item">Accesorios Gaming</div>
+        <div class="category-item">Torneos</div>
+      </div>
+
+      <div class="additional-content">
+        <section class="content-section">
+          <h2>Próximos Torneos</h2>
+          <p>Mantente al tanto de los próximos torneos y eventos de gaming.</p>
+          <div class="tournament-card">
+            <img
+              src="https://i.pinimg.com/736x/4f/e8/a2/4fe8a2e40a786e3054b77330b6cb94d3.jpg"
+              alt="Call of Duty:Warzone Caldera #6"
+              class="tournament-image"
+            />
+            <div class="tournament-details">
+              <h3>Call of Duty:Warzone Caldera #6</h3>
+              <p class="game-name">Call of Duty</p>
+              <div class="tournament-info">
+                <span class="info-item"
+                  ><i class="icon-battle-royale"></i> Battle Royale</span
+                >
+                <span class="info-item"><i class="icon-players"></i> 4v4</span>
+                <span class="info-item"
+                  ><i class="icon-slots"></i> 192 / 192</span
+                >
+              </div>
+              <p class="host">
+                Hosted by <span class="host-name">La Guarida de Antibush</span>
+                <i class="icon-verified"></i>
+              </p>
+              <div class="tournament-footer">
+                <span class="date-time">oct 08, 6:00 PM</span>
+                <span class="prize"><i class="icon-trophy"></i> 1200 USDC</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="tournament-card">
+            <img
+              src="https://i.pinimg.com/736x/4f/e8/a2/4fe8a2e40a786e3054b77330b6cb94d3.jpg"
+              alt="Call of Duty:Warzone Caldera #6"
+              class="tournament-image"
+            />
+            <div class="tournament-details">
+              <h3>Call of Duty:Warzone Caldera #6</h3>
+              <p class="game-name">Call of Duty</p>
+              <div class="tournament-info">
+                <span class="info-item"
+                  ><i class="icon-battle-royale"></i> Battle Royale</span
+                >
+                <span class="info-item"><i class="icon-players"></i> 4v4</span>
+                <span class="info-item"
+                  ><i class="icon-slots"></i> 192 / 192</span
+                >
+              </div>
+              <p class="host">
+                Hosted by <span class="host-name">La Guarida de Antibush</span>
+                <i class="icon-verified"></i>
+              </p>
+              <div class="tournament-footer">
+                <span class="date-time">oct 08, 6:00 PM</span>
+                <span class="prize"><i class="icon-trophy"></i> 1200 USDC</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="tournament-card">
+            <img
+              src="https://i.pinimg.com/736x/4f/e8/a2/4fe8a2e40a786e3054b77330b6cb94d3.jpg"
+              alt="Call of Duty:Warzone Caldera #6"
+              class="tournament-image"
+            />
+            <div class="tournament-details">
+              <h3>Call of Duty:Warzone Caldera #6</h3>
+              <p class="game-name">Call of Duty</p>
+              <div class="tournament-info">
+                <span class="info-item"
+                  ><i class="icon-battle-royale"></i> Battle Royale</span
+                >
+                <span class="info-item"><i class="icon-players"></i> 4v4</span>
+                <span class="info-item"
+                  ><i class="icon-slots"></i> 192 / 192</span
+                >
+              </div>
+              <p class="host">
+                Hosted by <span class="host-name">La Guarida de Antibush</span>
+                <i class="icon-verified"></i>
+              </p>
+              <div class="tournament-footer">
+                <span class="date-time">oct 08, 6:00 PM</span>
+                <span class="prize"><i class="icon-trophy"></i> 1200 USDC</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 La Guarida de Antibush. Todos los derechos reservados.</p>
+    </footer>
+
+    <a href="#" class="support-button">Soporte</a>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchBar = document.querySelector(".search-bar input");
+        const categoryItems = document.querySelectorAll(".category-item");
+        const featuredVideos = document.querySelectorAll(
+          ".featured-content video"
+        );
+        const contentNavBtns = document.querySelectorAll(".content-nav-btn");
+        let currentVideoIndex = 0;
+
+        searchBar.addEventListener("input", function () {
+          const searchTerm = this.value.toLowerCase();
+          categoryItems.forEach((item) => {
+            const text = item.textContent.toLowerCase();
+            if (text.includes(searchTerm)) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+
+        categoryItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            alert(`Has seleccionado la categoría: ${this.textContent}`);
+          });
+        });
+
+        function playNextVideo() {
+          featuredVideos[currentVideoIndex].classList.remove("active");
+          contentNavBtns[currentVideoIndex].classList.remove("active");
+          currentVideoIndex = (currentVideoIndex + 1) % featuredVideos.length;
+          featuredVideos[currentVideoIndex].classList.add("active");
+          contentNavBtns[currentVideoIndex].classList.add("active");
+          featuredVideos[currentVideoIndex].currentTime = 0;
+          featuredVideos[currentVideoIndex].play();
+        }
+
+        featuredVideos.forEach((video, index) => {
+          video.addEventListener("ended", playNextVideo);
+        });
+
+        contentNavBtns.forEach((btn, index) => {
+          btn.addEventListener("click", () => {
+            featuredVideos[currentVideoIndex].pause();
+            featuredVideos[currentVideoIndex].classList.remove("active");
+            contentNavBtns[currentVideoIndex].classList.remove("active");
+            currentVideoIndex = index;
+            featuredVideos[currentVideoIndex].classList.add("active");
+            contentNavBtns[currentVideoIndex].classList.add("active");
+            featuredVideos[currentVideoIndex].currentTime = 0;
+            featuredVideos[currentVideoIndex].play();
+          });
+        });
+
+        // Iniciar la reproducción del primer video
+        featuredVideos[0].play();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "tournaments": [
+    {
+      "id": 1,
+      "title": "Call of Duty:Warzone Caldera #6",
+      "game": "Call of Duty",
+      "image": "https://i.pinimg.com/736x/4f/e8/a2/4fe8a2e40a786e3054b77330b6cb94d3.jpg",
+      "type": "Battle Royale",
+      "format": "4v4",
+      "slots": {
+        "filled": 192,
+        "total": 192
+      },
+      "host": "La Guarida de Antibush",
+      "date": "Dic 09, 10:00 PM",
+      "prize": "1200 USDC"
+    },
+    {
+      "id": 2,
+      "title": "Torneos MLBB de HALLOWEEN",
+      "game": "MLBB",
+      "image": "https://www.communitygaming.io/_next/image?url=https%3A%2F%2Fimgs.communitygaming.io%2Ftournaments%2Ftorneo-mlbb-de-halloween-tn-1729246610.jpeg&w=1920&q=75",
+      "type": "TORNEO",
+      "format": "5V5",
+      "slots": {
+        "filled": 130,
+        "total": 192
+      },
+      "host": "La Guarida de Antibush",
+      "date": "Nov 28, 6:00 PM",
+      "prize": "3000 USDC"
+    },
+    {
+      "id": 3,
+      "title": "DOTA 2",
+      "game": "The International Coneros",
+      "image": "https://assets.communitygaming.io/games/dota-2thumbnail.jpeg",
+      "type": "TORNEO",
+      "format": "5v5",
+      "slots": {
+        "filled": 180,
+        "total": 192
+      },
+      "host": "La Guarida de Antibush",
+      "date": "nov 08, 6:00 PM",
+      "prize": "10 000 USDC"
+    }
+  ]
+}

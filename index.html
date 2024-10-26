@@ -4,92 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>La Guarida de Antibush</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="bg-gray-900 text-white">
-    <header class="bg-blue-900 p-4">
-      <div
-        class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4"
-      >
-        <div class="flex items-center gap-4">
-          <img
-            src="https://csgo.com/thumb/team/size-team-logo-big/2018/09/7/NzZ4cEhVU0hablY=.png"
-            alt="Logo"
-            class="w-12 h-12 rounded-full"
-          />
-          <span class="text-xl font-bold">La Guarida de Antibush</span>
-        </div>
-        <div class="w-full md:w-96">
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="¿Qué estás buscando?"
-            class="w-full px-4 py-2 rounded-full bg-blue-800 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-          />
-        </div>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img
+          src="https://csgo.com/thumb/team/size-team-logo-big/2018/09/7/NzZ4cEhVU0hablY=.png"
+          alt="Logo"
+          class="logo"
+        />
+        <span class="brand-name">La Guarida de Antibush</span>
       </div>
     </header>
 
-    <nav class="bg-black">
-      <div class="max-w-6xl mx-auto">
-        <ul class="flex justify-center space-x-8 p-4 overflow-x-auto">
-          <li><a href="#inicio" class="nav-link">INICIO</a></li>
-          <li><a href="#torneos" class="nav-link">TORNEOS</a></li>
-          <li><a href="#recargas" class="nav-link">RECARGAS</a></li>
-          <li><a href="#accesorios" class="nav-link">ACCESORIOS</a></li>
-          <li><a href="#acerca-de" class="nav-link">ACERCA DE</a></li>
-        </ul>
-      </div>
+    <nav>
+      <ul>
+        <li><a href="#inicio">INICIO</a></li>
+        <li><a href="#torneos">TORNEOS</a></li>
+        <li><a href="#recargas">RECARGAS</a></li>
+        <li><a href="#accesorios">ACCESORIOS</a></li>
+        <li><a href="#acerca-de">ACERCA DE</a></li>
+      </ul>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-4 py-8">
-      <div
-        id="featuredContent"
-        class="relative rounded-2xl overflow-hidden mb-8"
-      >
-        <div class="featured-videos"></div>
-        <div
-          class="content-nav absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2"
-        ></div>
+    <main>
+      <div class="featured-content">
+        <video autoplay loop muted playsinline class="active">
+          <source src="wasone3.mp4" type="video/mp4" />
+          Tu navegador no soporta el elemento de video.
+        </video>
+        <video loop muted playsinline>
+          <source src="waasone2.mp4" type="video/mp4" />
+          Tu navegador no soporta el elemento de video.
+        </video>
+        <video loop muted playsinline>
+          <source src="warsone.mp4" type="video/mp4" />
+          Tu navegador no soporta el elemento de video.
+        </video>
+        <div class="content-nav">
+          <div class="content-nav-btn active"></div>
+          <div class="content-nav-btn"></div>
+          <div class="content-nav-btn"></div>
+        </div>
       </div>
-
-      <div class="bg-gray-800/50 rounded-2xl p-8 text-center mb-12">
-        <h1 class="text-3xl font-bold text-yellow-400 mb-4">
-          BIENVENIDO A LA GUARIDA DE ANTIBUSH
-        </h1>
-        <p class="text-gray-300">
-          Tu destino para videojuegos digitales, recargas y accesorios gaming
+      <div class="welcome">
+        <h1>BIENVENIDO A LA GUARIDA DE ANTIBUSH</h1>
+        <p>
+          Bienvenido a tu portal completo para el mundo gaming: donde puedes
+          encontrar los torneos de videojuegos digitales más intensos, realizar
+          recargas instantáneas para tus títulos favoritos y descubrir
+          accesorios de última generación. Conéctate con jugadores de todo el
+          mundo, mejora tu equipo y vive cada partida como nunca antes. ¡Todo lo
+          que necesitas para ser un gamer al máximo está aquí!
         </p>
       </div>
 
-      <section id="categories">
-        <h2 class="text-2xl font-bold mb-6">CATEGORÍAS</h2>
-        <div
-          class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
-          id="categoryGrid"
-        ></div>
-      </section>
-
-      <section id="tournaments">
-        <h2 class="text-2xl font-bold mb-6">Próximos Torneos</h2>
-        <div id="tournamentsContainer" class="space-y-8"></div>
-      </section>
+      <div id="tournaments-container"></div>
     </main>
 
-    <footer class="bg-gray-800 text-center p-4 mt-12">
+    <footer>
       <p>&copy; 2024 La Guarida de Antibush. Todos los derechos reservados.</p>
     </footer>
 
-    <button
-      class="fixed bottom-6 right-6 bg-yellow-400 text-black px-6 py-3 rounded-t-xl rounded-bl-xl font-bold shadow-lg flex items-center gap-2"
-    >
-      💬 Soporte
-    </button>
-
-    <script src="data.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

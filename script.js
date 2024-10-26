@@ -29,7 +29,7 @@ function renderTournaments(data) {
   });
 }
 
-// Cargar los datos y renderizar los torneos
+
 fetch("Bloques.json")
   .then((response) => response.json())
   .then((data) => renderTournaments(data))
